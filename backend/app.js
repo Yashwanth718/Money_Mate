@@ -23,4 +23,7 @@ app.options(
 
 app.use(express.json({limit:"50mb"}));
 
+import router from "./routes/index.js";
+app.use("/api/v1", router);
+
 export {app}
