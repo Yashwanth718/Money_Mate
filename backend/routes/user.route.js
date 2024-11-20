@@ -1,7 +1,7 @@
 import z from "zod"
 import {User} from "../models/user.model.js"
 import express from "express"
-
+import { Account } from "../models/account.model.js";
 const userRouter = express.Router(); 
 
 import jwt from "jsonwebtoken"
@@ -46,7 +46,7 @@ userRouter.post("/signup", async (req, res) => {
   });
 
   const token = jwt.sign({ userId: newUser._id }, process.env.ACCESS_TOKEN);
-  res
+  return res
     .cookie("token", token, {
       httpOnly: true,
     })
